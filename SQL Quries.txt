@@ -1,0 +1,37 @@
+  Q1- who are the artists with most number of albums ?
+***************************
+
+SELECT Artist.Name , count(Album.ArtistId) "number of albums"
+FROM Album
+JOIN artist ON album.ArtistId=Artist.ArtistId
+GROUP BY artist.name ORDER BY "number of albums" DESC LIMIT 10 ;
+
+---------------------------------------------------------------------------
+
+Q2- What are the albums with the most numbers of tracks ?
+**************************
+
+SELECT Album.Title , count(Track.Name) "number of tracks"
+FROM Track
+JOIN Album ON Track.AlbumId=Album.AlbumId
+GROUP BY Album.Title ORDER BY "number of tracks" DESC LIMIT 10 ;
+
+-----------------------------------------------------------------------------
+
+Q3- How many tracks are there per genre ?
+**********************
+
+SELECT Genre.Name , count(Track.GenreId) "number of tracks per genre"
+FROM Genre
+JOIN Track ON Genre.GenreId=Track.GenreId
+GROUP BY genre.Name ORDER BY "number of tracks per genre" DESC LIMIT 10 ;
+
+-----------------------------------------------------------------------------
+
+Q4- What is the most popular media type?
+***********************
+SELECT MediaType.Name , count(Track.mediatypeid) "most popular mediatype"
+FROM Track
+JOIN MediaType ON Track.MediaTypeId = MediaType.MediaTypeId
+GROUP BY MediaType.name ORDER BY "number of mediatype" DESC LIMIT 10;
+
